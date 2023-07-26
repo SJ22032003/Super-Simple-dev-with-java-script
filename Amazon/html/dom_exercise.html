@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dom Exercise</title>
+</head>
+<body>
+  <button class="head">head</button>
+  <button class="tails">tails</button>
+  <p class="result"></p>
+
+  <input class="input-button" type="text" onkeydown="">
+  <button class="submit-button">Submit</button>
+<p class="message"></p>
+  <script>
+
+const input = document.querySelector('.input-button');
+const submit = document.querySelector('.submit-button');
+const message = document.querySelector('.message');
+
+
+
+submit.addEventListener('click', function(){
+  
+  message.innerHTML = `Your Name is: ${input.value}`
+  
+})
+
+const head = document.querySelector('.head');
+const tails = document.querySelector('.tails');
+const result = document.querySelector('.result');
+let randumNumber = Math.random();
+
+head.addEventListener('click', function(){
+ let re =  randumNumber < 0.5 ? 'head' : 'tails'
+let guess = 'head' ;
+  guess ===  'head'? 'win': 'lose';
+  result.innerHTML = `You chose ${head.innerHTML}`
+})
+
+tails.addEventListener('click', function(){
+ let re =  randumNumber < 0.5 ? 'head' : 'tails'
+let guess = 'head' ;
+  guess ===  'head'? 'win': 'lose';
+  result.innerHTML = `You chose ${tails.innerHTML}`
+})
+
+// tails.addEventListener('click', function(){
+//   randumNumber < 0.5 ? 'head' : 'tails'
+//   head.innerHTML === 'tails'? 'win': 'lose';
+  
+// })
+
+  </script>
+</body>
+</html>

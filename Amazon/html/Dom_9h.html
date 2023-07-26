@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input class="inputTag" type="text" placeholder="Type something" onkeyup="
+      returnKey();
+    ">
+  <p class="textBox"></p>
+
+  <script>
+    
+   function returnKey(){
+    const inputTag = document.querySelector('.inputTag');
+    const textBox = document.querySelector('.textBox');
+    textBox.innerHTML = inputTag.value;
+   }
+  </script>
+</body>
+</html>

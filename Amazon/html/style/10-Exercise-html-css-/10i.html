@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Calculator</title>
+  <link rel="stylesheet" href="/Amazon/style/calculator-style.css">
+
+</head>
+<body>
+
+
+  
+  <p class="display-on-page display-cal"></p>
+  <div>
+    <button onclick="
+    updateCalculation('1')
+    " class="button">1</button>
+
+    <button onclick="
+  updateCalculation('2')
+  " class="button">2</button>
+
+    <button onclick="
+  updateCalculation('3')
+  " class="button">3</button>
+
+    <button onclick="
+  updateCalculation(' + ')
+  "class="plus-button button">+</button>
+  </div>
+  <br>
+
+  <div>
+    <button onclick="
+      updateCalculation('4')
+      "class="button">4</button>
+
+    <button onclick="
+    updateCalculation('5')
+    "class="button">5</button>
+
+    <button onclick="
+    updateCalculation('6')
+    "class="button">6</button>
+
+    <button onclick="
+    updateCalculation(' - ')
+    "class="minus-button button">-</button>
+  </div>
+  <br>
+
+  <div>
+    <button onclick="
+   updateCalculation('7')
+    "class="button">7</button>
+
+    <button onclick="
+    updateCalculation('8')
+    "class="button">8</button>
+
+    <button onclick="
+    updateCalculation('9')
+    "class="button">9</button>
+
+    <button onclick="
+    updateCalculation(' * ')
+    "class="multiply-button button">*</button>
+
+  </div><br>
+
+  <div>
+    <button onclick="
+    updateCalculation('0')
+    "class="button">0</button>
+
+    <button onclick="
+    updateCalculation(' . ')
+    "class="dot-button button">.</button>
+
+    <button onclick="
+  calculation = eval(calculation);
+  console.log(calculation)
+  displayCalculation();
+  "class="button">=</button>
+
+    <button onclick="
+    updateCalculation(' / ')
+    "class="divide-button button">/</button>
+
+  </div><br>
+
+  <button onclick="
+  calculation = '';
+  console.log('Cleared')
+  displayCalculation();
+  " class="clear-button">Clear</button>
+
+  <script src="/Amazon/scripts/calculator-script.js"></script>
+
+
+
+</body>
+
+</html>

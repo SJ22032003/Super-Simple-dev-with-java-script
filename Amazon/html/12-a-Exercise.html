@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>app</title>
+</head>
+
+<body>
+
+  <!-- <button class="finshed-button" onclick="finshed();">Start</button>
+  <button class="add-to-cart" onclick="addToCart();">Add to Cart</button>
+  <p class="pera"></p> -->
+
+  <button onclick="message++">Add</button>
+  <button onclick="message--">Remove</button>
+
+  <script>
+
+    //  12 A
+
+    // let add = function(){
+    //   console.log(2 + 3);
+    // }
+    // add();
+    // add();
+
+    // // 12 B
+
+    // function runTwice(fun){
+    //   fun()
+    //   fun()  
+    // }
+    // runTwice(function(){
+    //   console.log('12b');
+
+    // })
+    // runTwice(add);
+
+    // 12 C
+
+    // function finshed(){
+    //   const button = document.querySelector('.finshed-button');
+
+    //   setTimeout(function(){
+    //     button.innerHTML = 'finished';
+    //   }, 1000)
+    // }
+
+    // 12 D
+
+    // function finshed(){
+    //   const button = document.querySelector('.finshed-button');
+    //    button.innerHTML = 'Loading..'
+    //   setTimeout(function(){
+    //     button.innerHTML = 'finished!';
+    //   }, 1000)
+    // }
+
+    // 12 E
+
+    // function addToCart() {
+
+    //   const para = document.querySelector('.pera');
+    //   para.innerHTML = 'Added'
+
+    //   setTimeout(function(){
+    //     para.innerHTML = '';
+    //   }, 2000)
+
+    // }
+
+    // 12 F
+
+    // let clrInterval;
+    // function addToCart() {
+
+    //   const para = document.querySelector('.pera');
+    //   para.innerHTML = 'Added'
+
+    //   clearInterval(clearInterval);
+    //   clrInterval = setTimeout(function () {
+    //     para.innerHTML = '';
+    //   }, 2000)
+
+    // }
+
+      //  12 G
+
+        // setInterval(function(){
+        //   if (document.title === 'App') {
+        //   document.title = '(2) New messages';
+        // } else {
+        //   document.title = 'App';
+        // }
+        // }, 2000)
+
+        //  12 H
+         
+          let message = 2;
+          let interval;
+          
+
+       interval = setInterval(function(){
+          
+          if (document.title === 'App') {
+            
+          document.title = `(${message}) New messages`;
+        } else {
+          document.title = 'App';
+        }
+        }, 2000)
+        
+        if(message == 0){
+             clearInterval(interval);
+            
+            }
+  </script>
+</body>
+
+</html>

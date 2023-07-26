@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turn On/Off button</title>
+  <style>
+    .gaming-button, .tech-button, .music{
+      background-color: rgb(230, 230, 230);
+      border: none;
+      font-size: 15px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .is-toggled {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="gaming-button" onclick="
+    toggleButton('.gaming-button')
+    ">Gaming</button>
+
+  <button onclick="
+    toggleButton('.music')
+    "class="music">Music</button>
+
+  <button onclick="
+  toggleButton('.tech-button');
+ "  class="tech-button">Tech</button>
+
+  <script>
+    function toggleButton(selector) {
+      const tech = document.querySelector(selector)
+      
+
+      if (!tech.classList.contains('is-toggled')) {
+
+        turnOffPreviousButton();
+        tech.classList.add('is-toggled');
+      }
+      else {
+        tech.classList.remove('is-toggled')
+      }
+    }
+
+    function turnOffPreviousButton() {
+  const previousButton = document.querySelector('.is-toggled');
+  if (previousButton) {
+    previousButton.classList.remove('is-toggled');
+  }
+}
+  </script>
+</body>
+
+</html>

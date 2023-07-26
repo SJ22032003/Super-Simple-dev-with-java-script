@@ -1,0 +1,43 @@
+body{
+  background-color: rgb(25, 25, 25);
+  color: white;
+  font-family: Arial;
+}
+.rock-paper-heading{
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+}
+.move-icon{
+  height: 50px;
+  
+}
+.move-button{
+ 
+  border: 3px solid white;
+  background-color: transparent;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.js-result{
+  font-size: 25px;
+  margin-top: 50px;
+  font-weight: bold;
+}
+.score{
+  margin-top: 50px;
+}
+.reset-button, .auto-play{
+ 
+  padding: 8px 15px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+.confirmation-button, .js-reset-yes{
+  background-color: aqua;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turn On/Off button</title>
+  <style>
+    .gaming-button, .tech-button, .music{
+      background-color: rgb(230, 230, 230);
+      border: none;
+      font-size: 15px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .is-toggled {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="gaming-button" onclick="
+   const button = document.querySelector('.gaming-button');
+  
+  if(!button.classList.contains('is-toggled')){
+    button.classList.add('is-toggled');
+  }
+  else{
+    button.classList.remove('is-toggled')
+  };
+    ">Gaming</button>
+
+  <button onclick="const musicButton = document.querySelector('.music');
+  
+    if(!musicButton.classList.contains('is-toggled')){
+      musicButton.classList.add('is-toggled');
+    }
+    else{
+      musicButton.classList.remove('is-toggled')
+
+    }"  class="music">Music</button>
+
+  <button onclick="const techButton = document.querySelector('.tech-button');
+  
+    if(!techButton.classList.contains('is-toggled')){
+      techButton.classList.add('is-toggled');
+    }
+    else{
+      techButton.classList.remove('is-toggled')
+    }"  class="tech-button">Tech</button>
+
+  <script>
+    function toggleButton() {
+      const button = document.querySelector('.gaming-button');
+
+      if (!button.classList.contains('is-toggled')) {
+        button.classList.add('is-toggled');
+      }
+      else {
+        button.classList.remove('is-toggled')
+      }
+    }
+  </script>
+</body>
+
+</html>

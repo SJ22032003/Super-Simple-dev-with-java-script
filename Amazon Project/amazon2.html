@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="module" src="checkout.js"></script>
+  <link rel="stylesheet" href="amazon2.css">
+</head>
+
+<body>
+  <div class="checkout-header">
+
+    <div class="checkout-head-container">
+
+      <div class="checkout-amazon-logo">
+       <a href="http://127.0.0.1:5500/Amazon.html"><img src="/images/amazon-logo black.png" alt="Amazon logo"></a>
+      </div>
+
+      <div class="checkout">
+        Checkout
+        <span class="checkout-header-items">(<a class="ancher-tag" href="http://127.0.0.1:5500/Amazon.html"> <span
+              class="checkout-out"></span> Items</a>)</span>
+      </div>
+
+
+      <div class="right-header">
+        <img src="/images/checkout-lock-icon.png" alt="">
+      </div>
+
+    </div>
+  </div>
+
+  <main class="main-checkout">
+    <div class="review-order">
+      Review your order
+    </div>
+
+    <div class="checkout-container">
+        <div class="js-cart-summary">
+            <div class="empty-cart-msg">Your cart is empty.</div>
+            <a class="view-product-button" href="http://127.0.0.1:5500/Amazon.html">View products</a>
+          </div>
+
+       <div class="order-summary">
+
+        <div class="payment-info">
+          <h3 class="order-summary-title">Order Summary</h3>
+
+          <div class="order-summary-items">
+            <p>Items(10):</p>
+            <p class="payment-summary">S146.45</p>
+          </div>
+
+          <div class="shipping-handling order-summary-items">
+            <p>Shipping & handling:</p>
+            <p class="payment-summary">$0.00</p>
+          </div>
+
+          <div class="Total-tax order-summary-items">
+            <p>Total before tax:</p>
+            <p class="payment-summary">$146.45</p>
+
+            <p>Estimated tax(10%)</p>
+            <p class="payment-summary">$14.65</p>
+          </div>
+
+          <div class="order-total-items total-row">
+            <div class="order-summary-items">Order Total</div>
+            <div class="Order-total payment-summary">
+              $161.10
+            </div>
+          </div>
+
+        </div>
+        <div class="use-paypal">Use PayPal <input type="checkbox" class="paypal-toggle-input"></div>
+
+        <div>
+          <div class="paypal-button">
+          </div>
+          <button class="place-order-button">Place your order</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="cart.js"></script>
+<script src="checkout.js"></script>
+
+
+</body>
+
+</html>

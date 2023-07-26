@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turn On/Off button</title>
+  <style>
+    .gaming-button{
+      background-color: rgb(230, 230, 230);
+      border: none;
+      font-size: 15px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .is-toggled{
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <button class="gaming-button" onclick="
+  const button = document.querySelector('.gaming-button');
+  
+  if(!button.classList.contains('is-toggled')){
+    button.classList.add('is-toggled');
+  }
+  else{
+    button.classList.remove('is-toggled')
+  }
+   
+    ">Gaming</button>
+  <script>
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Roboto, Arial;
+}
+
+.checkout-header {
+  height: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+.checkout-head-container{
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.right-header{
+  text-align: right;
+    width: 150px;
+}
+.checkout-amazon-logo img {
+  width: 100px;
+  margin-top: 12px;
+  color: black;
+}
+
+.checkout-header-container {
+  display: flex;
+
+  justify-content: center;
+}
+
+.checkout {
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.checkout-header-items a {
+
+  color: rgb(0, 113, 133);
+  font-size: 23px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.review-order{
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+
+.main-checkout{
+   max-width: 1100px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 140px;
+    margin-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.delivery-date{
+  color: rgb(0, 118, 0);
+  font-weight: 700;
+  font-size: 19px;
+  margin-top: 5px;
+  margin-bottom: 22px;
+}
+.left-right-container{
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  column-gap: 25px;
+}
+.product-image img{
+  max-width: 100%;
+  max-height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.product-details{
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.price{
+  color: rgb(177, 39, 4);
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.quantity-update{
+  margin-left: 3px;
+}
+.quantity-delete{
+  margin-left: 3px;
+}
+.delivery-summary{
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.date-free-shiping{
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.order-summary-items{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  font-size: 15px;
+  margin-bottom: 9px;
+}
+.order-total-items{    
+  display: grid;
+  grid-template-columns: 1fr auto;
+  font-size: 15px;
+  margin-bottom: 9px
+}
+.total-row{
+  color: rgb(177, 39, 4);
+    font-weight: 700;
+    font-size: 18px;
+    border-top: 1px solid rgb(222, 222, 222);
+    padding-top: 18px;
+}
+.order-summary-items{
+  font-weight: 700;
+  font-size: 18px;
+ 
+}
+.paypal-button{
+  margin-top: 20px;
+  display: none;
+}
+.place-order-button{
+  width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 19px;
+
+    color: rgb(33, 33, 33);
+    background-color: rgb(255, 216, 20);
+    border: 1px solid rgb(252, 210, 0);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+.paypal-toggle-input{
+  cursor: pointer;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+}
+.use-paypal{
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+}
+.payment-summry{
+  border-top: 1px solid rgb(222, 222, 222);
+}
+.order-summary-title{
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+.delivery-option-shiping{    
+  color: rgb(120, 120, 120);
+  font-size: 15px;
+}
+.delivery-option-date{
+  color: rgb(0, 118, 0);
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+.first-input{
+  margin-left: 0px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.checkout-container{
+  
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  column-gap: 12px;
+  align-items: start;
+}
+.payment-summary{
+  text-align: right;
+
+}
+.order-summary-items{
+  /* display: grid;
+  grid-template-columns: 1fr auto;
+  font-size: 15px;
+  margin-bottom: 9px; */
+
+ 
+}
+.order-summary{
+  border: 1px solid rgb(222, 222, 222);
+  border-radius: 4px;
+  padding: 18px;
+  padding-bottom: 5px;
+}
+.left-inner-container{
+  border: 1px solid rgb(222, 222, 222);
+  border-radius: 4px;
+  padding: 18px;
+  margin-bottom: 12px;
+}
+.view-product-button{
+  display: inline-block;
+  padding: 8px 15px;
+  text-decoration: none;
+  margin-top: 10px;
+
+  color: rgb(33, 33, 33);
+    background-color: rgb(255, 216, 20);
+    border: 1px solid rgb(252, 210, 0);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}

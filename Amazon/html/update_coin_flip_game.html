@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<button onclick="
+  returnResult('heads');
+  ">heads</button>
+<button onclick="
+returnResult('tails');
+">tails</button>
+
+  <script>
+    let score = {
+      wins: 0,
+      losses: 0
+    };
+  function returnResult(value){
+    const randumNumber = Math.random();
+   let result = randumNumber < 0.5 ? 'heads': 'tails'
+   
+   let re = result === value ? 'You win': 'You lose';
+   if (value === result) {
+          score.wins++;
+        } else {
+          score.losses++;
+        }
+        console.log(score);
+        localStorage.setItem('result', JSON.stringify(score))
+   console.log(re);
+
+   console.log(JSON.parse(localStorage.getItem('score')));
+   
+  }
+
+  </script>
+</body>
+</html>

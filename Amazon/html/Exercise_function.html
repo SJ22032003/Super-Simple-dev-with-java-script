@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Quantity</title>
+</head>
+
+<body>
+  <p>Cart Quantity</p>
+
+  <button onclick="
+  console.log(`Cart Quantity = ${cartQuantity}`);
+  ">Show Quantity</button>
+
+  <button onclick="
+  updateCartQuantity(1);
+  ">Add to Cart</button>
+
+  <button onclick="
+   updateCartQuantity(2);
+  ">+2</button>
+
+  <button onclick="
+   updateCartQuantity(3);
+  ">+3</button>
+
+  <button onclick="
+  updateCartQuantity(4);
+  ">+4</button>
+
+  <button onclick="
+   updateCartQuantity(5);
+  ">+5</button>
+
+  <button onclick="
+   updateCartQuantity(-1);
+  ">Remove from cart</button>
+
+  <button onclick="
+ updateCartQuantity(-2);
+">-2</button>
+
+  <button onclick="
+ updateCartQuantity(-3);
+  ">-3</button>
+
+  <button onclick="
+  cartQuantity = 0;
+  console.log('Cart was reset.');
+ console.log(`Cart Quantity = ${cartQuantity}`);
+  ">Reset Cart</button>
+
+
+  <script>
+    let cartQuantity = 0;
+
+    function updateCartQuantity(update) {
+
+      if (cartQuantity + update > 10) {
+        alert(`The cart is full.`);
+        return;
+      }
+      if(cartQuantity + update < 0){
+        alert('Not enough items in the cart')
+        return;
+      }
+     
+        cartQuantity += update;
+        console.log(`Cart Quantity = ${cartQuantity}`);
+    }
+
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paractice function</title>
+</head>
+<body>
+  <script>
+    function greet(name){
+      if(!name){
+        console.log('Hello There')
+      }
+      else{
+      console.log(`Hello ${name}`);
+      }
+    }
+    greet();
+
+    function convertToFahrenheit(celsius){
+      let fahrenheit = (celsius * 9/5)+32;
+      return fahrenheit;
+
+    }
+    console.log(convertToFahrenheit(25))
+
+    function convertToCelsius(fahrenheit){
+      let Celsius = (fahrenheit - 32)*5/9;
+      return Celsius;
+    }
+    console.log(convertToCelsius(86))
+
+    function convertTemperature(degrees,unit){
+      if(unit === 'C'){
+      let far = convertToFahrenheit(degrees)
+      return `${far}F`
+      }
+      else if(unit === 'F'){
+       let cel = convertToCelsius(degrees)
+       return `${cel}C`
+      }
+    }
+    console.log(convertTemperature(25,'C'));
+    console.log(convertTemperature(86,'F'));
+    
+    
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+</head>
+
+<body>
+  <p>Calculator</p>
+  <div>
+    <button onclick="
+    updateCalculation('1')
+    ">1</button>
+
+    <button onclick="
+  updateCalculation('2')
+  " class="2">2</button>
+
+    <button onclick="
+  updateCalculation('3')
+  " class="3">3</button>
+
+    <button onclick="
+  updateCalculation(' + ')
+  ">+</button>
+  </div>
+  <br>
+
+  <div>
+    <button onclick="
+      updateCalculation('4')
+      ">4</button>
+
+    <button onclick="
+    updateCalculation('5')
+    ">5</button>
+
+    <button onclick="
+    updateCalculation('6')
+    ">6</button>
+
+    <button onclick="
+    updateCalculation(' - ')
+    ">-</button>
+  </div>
+  <br>
+
+  <div>
+    <button onclick="
+   updateCalculation('7')
+    ">7</button>
+
+    <button onclick="
+    updateCalculation('8')
+    ">8</button>
+
+    <button onclick="
+    updateCalculation('9')
+    ">9</button>
+
+    <button onclick="
+    updateCalculation(' * ')
+    ">*</button>
+
+  </div><br>
+
+  <div>
+    <button onclick="
+    updateCalculation('0')
+    ">0</button>
+
+    <button onclick="
+    updateCalculation(' . ')
+    ">.</button>
+
+    <button onclick="
+  calculation = eval(calculation);
+  console.log(calculation)
+  ">=</button>
+
+    <button onclick="
+    updateCalculation(' / ')
+    ">/</button>
+
+  </div><br>
+
+  <button onclick="
+  calculation = '';
+  console.log('Cleared')
+  ">Clear</button>
+
+  <script>
+    let calculation = '';
+
+    function updateCalculation(cal){
+     
+        calculation += cal;
+        console.log(calculation)
+      
+    }
+  </script>
+</body>
+
+</html> -->

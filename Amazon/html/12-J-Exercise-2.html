@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Function</title>
+</head>
+<body>
+  <button>Hey</button>
+
+  <script>
+
+    // 12 J
+
+    // multiply = (num1,num2)=>{
+    //   return num1 * num2;
+    // }
+
+    
+
+    // 12 K
+
+  //  const multiply = (num1,num2) => num1 * num2;
+  //   console.log(multiply(2,3));
+  //   console.log(multiply(7,10));
+
+    // 12 L
+      
+    // countPositive = (nums)=>{
+    //   let count = '';
+    //   nums.forEach((value)=>{
+    //       if(value >= 0){
+    //         count++;
+    //       }
+    //   })
+    //   return count;
+    // }
+    // console.log(countPositive([-2, 3, -5, 7, 10]));
+    // console.log(countPositive([1,-3,5]));
+
+    // 12 N
+
+  //  const removeEgg = (foods)=>{
+  //   return foods.filter((value)=> value != 'egg');
+  //   }
+  //   console.log(removeEgg(['egg','apple','egg','egg','hmm']));
+
+    // 12 O 
+    
+    const removeEgg = (foods)=>{
+      let eggsRemoved = 0;
+  return foods.filter((food) => {
+        if(food == 'egg' && eggsRemoved < 2){
+          eggsRemoved++;
+          return false;
+        }
+        return true;
+    })
+   
+    }
+    console.log(removeEgg(['egg','apple','egg','egg','hmm']));
+  </script>
+</body>
+</html>

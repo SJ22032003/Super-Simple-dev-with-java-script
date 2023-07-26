@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    .subcribe {
+      background-color: black;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .is-subcribed {
+      background-color: rgb(240, 240, 240);
+      color: black;
+
+    }
+
+    .cost-of-input {
+      padding: 10px;
+      font-size: 15px;
+    }
+
+    .calculation-button {
+      background-color: green;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Youtube Subcribe Button</p>
+
+  <button onclick="
+      funtionButton();
+      " class="subcribe"> Subcribe</button>
+
+  <p>Amazon Shiping Calculator</p>
+
+  <input type="text" placeholder="Cost of order" class="cost-of-input">
+
+  <button class="calculation-button" onclick="
+     discal();
+      ">Calculator</button>
+  <p class="display-value"></p>
+  <p class="display-error error"></p>
+  <script>
+    function funtionButton() {
+
+      const subcribe = document.querySelector('.subcribe')
+
+
+      if (subcribe.innerText === 'Subcribe') {
+        subcribe.innerText = 'Subcribed';
+        subcribe.classList.add('is-subcribed');
+      }
+      else {
+        subcribe.innerText = 'Subcribe';
+        subcribe.classList.remove('is-subcribed')
+      }
+
+    }
+    function discal() {
+      const input = document.querySelector('.cost-of-input')
+      const displayValue = document.querySelector('.display-value')
+
+      let getInput = Number(input.value);
+      document.querySelector('.display-error').innerHTML = '';
+      if (getInput < 0) {
+        document.querySelector('.display-error').innerText = `Error: cost cannot be less than $0`;
+        return;
+      }
+
+      if (getInput < 40) {
+        getInput += 10
+        displayValue.innerHTML = `$${getInput}`;
+      }
+      else {
+        displayValue.innerHTML = `$${getInput}`
+      }
+    }
+  </script>
+</body>
+
+</html>
