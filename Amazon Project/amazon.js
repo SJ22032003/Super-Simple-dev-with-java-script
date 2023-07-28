@@ -1,7 +1,9 @@
-
+import {cart} from './cart.js';
 import { products } from "./output.js";
 localStorage.clear();
-
+// let myCart = localStorage.getItem("myCart") || [];
+const myCart = JSON.parse(localStorage.getItem('myCart')) || [];
+// console.log(myCart)
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -50,67 +52,74 @@ if (document.querySelector(".js-product-cantainer")) {
   document.querySelector(".js-product-cantainer").innerHTML = productsHTML;
 }
 
-let cartQuantity = 0;
+
+
+// ... (your existing code)
+
+
+JSON.parse(localStorage.getItem('myCart')) || [];
 
 const addToCartButton = document.querySelectorAll('.js-add-to-cart-button').forEach((button) => {
-
-
   button.addEventListener('click', () => {
+    // myCart = localStorage.getItem("myCart");
+    const myCart = JSON.parse(localStorage.getItem('myCart'))
+    // console.log(myCart, "second")
     const productId = button.dataset.productId;
-    
-  
-    const product = products.find((p) => p.id === parseInt(productId));
-    
-    
-    let matchingItem;
-    cart.forEach((item) => {
-     
-      
-      if (parseInt( productId) === item.product.id) {
+    // const product = products.find((p) =>  p?.id === parseInt(productId));
 
+  const product =   products.find((p)=>{
+   
+        return p?.id === parseInt(productId)
+    })
+
+    
+    const index = myCart?.findIndex((p)=>p?.product?.id === parseInt(productId));
+  //  console.log(index)
+    // console.log(product)
+    // console.log(myCart)
+    let matchingItem;
+    myCart?.forEach((item) => {
+     
+      if (parseInt(productId) === item?.product?.id) {
         matchingItem = item;
         
       }
-    })
-   
-    
+    });
+
+
     const quantitySelector = document.querySelector(`.product-select-${productId}`);
-
     const quantity = Number(quantitySelector.value);
+   
 
-    
     if (matchingItem) {
+      
+      matchingItem.product.quantity = matchingItem.product.quantity + quantity;
      
-      matchingItem.product.quantity += quantity;
-    }
-    else {
-      console.log('hello')
+      cart[index] = matchingItem;
+    
+     
+    } else {
+      
       cart.push({
         product: {
           ...product,
-          quantity
+          quantity: quantity,
         }
-       
-      })
+      });
     }
-    
-
-    cartQuantity += quantity;
-
-
-    const cartValue = document.querySelector('.js-cart-value').innerHTML = cartQuantity;
    
-     localStorage.setItem('cartValue', cartQuantity);
-
-    localStorage.setItem('myCart', JSON.stringify(
-      [
-        ...(JSON.parse(localStorage.getItem('myCart')) ?? []), 
-        ...cart
-      ]
-    ))
-  })
-
+    let cartQuantity = 0; 
+    cart.forEach((item) => {
+      cartQuantity += item.product.quantity;
+    });
+    
+    const cartValueElement = document.querySelector('.js-cart-value');
+    cartValueElement.innerHTML = cartQuantity;
+    localStorage.setItem('cartValue', cartQuantity);
+    localStorage.setItem('myCart', JSON.stringify(cart));
+  });
 });
+
 
 
 

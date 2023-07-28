@@ -98,9 +98,7 @@ body {
 .quantity-update{
   margin-left: 3px;
 }
-.quantity-delete{
-  margin-left: 3px;
-}
+
 .delivery-summary{
   font-weight: 700;
   margin-bottom: 10px;
@@ -231,4 +229,36 @@ body {
     border-radius: 8px;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+.quantity-delete{
+  cursor: pointer;
+  color: #017cb6;
+  margin-left: 8px;
+  
+}
+.quantity-delete:hover{
+  color: rgb(177, 39, 4)
+}
+.update-container{
+  display: flex;
+  align-items: center;
+}
+.update-button{
+  cursor: pointer;
+  color: #017cb6;
+}
+.update-button:hover{
+  color: rgb(177, 39, 4)
+}
+.save-button{
+  cursor: pointer;
+  color: #017cb6;
+  text-decoration: none;
+  border: none;
+  background-color: white;
+  padding: 0px;
+  font-size: 20px;
+}
+.save-button:hover{
+  color: rgb(177, 39, 4)
 }
