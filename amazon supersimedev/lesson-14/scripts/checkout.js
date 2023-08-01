@@ -1,13 +1,11 @@
 import {
   cart,
   removeFromCart,
-  calculateCartQuantity,
   updateQuantity,
-  reviewQuantity
-} from '../data/cart.js';
-import { products } from '../data/products.js';
-import { formatCurrency } from './utils/money.js';
-let cartSummaryHTML = '';
+} from "../data/cart.js";
+import { products } from "../data/products.js";
+import { formatCurrency } from "./utils/money.js";
+let cartSummaryHTML = "";
 cart.forEach((cartItem) => {
   const productId = cartItem.productId;
   let matchingProduct;
@@ -35,21 +33,27 @@ cart.forEach((cartItem) => {
             <div class="product-quantity">
               <span>
               
-                Quantity: <span class="quantity-label js-quantity-label-${matchingProduct.id}">${cartItem.quantity}</span>
+                Quantity: <span class="quantity-label js-quantity-label-${
+                  matchingProduct.id
+                }">${cartItem.quantity}</span>
               </span>
               <span class="update-quantity-link link-primary js-update-link"
                 data-product-id="${matchingProduct.id}">
                 Update
               </span>
 
-              <input type="number" class="quantity-input js-quantity-input-${matchingProduct.id}">
+              <input type="number" class="quantity-input js-quantity-input-${
+                matchingProduct.id
+              }">
 
               <span class="save-quantity-link link-primary js-save-link"
                 data-product-id="${matchingProduct.id}">
                 Save
               </span>
 
-              <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
+              <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
+                matchingProduct.id
+              }">
                 Delete
               </span>
 
@@ -63,10 +67,12 @@ cart.forEach((cartItem) => {
 
             <div class="delivery-option">
             <label>
-              <input type="radio" checked
-              value= 0
+             <input type="radio"
+                value="0"
+                checked
                 class="delivery-option-input"
-                name="delivery-option-${matchingProduct.id}" />
+                name="delivery-option-${matchingProduct.id}"
+                data-product-id="${matchingProduct.id}" />
                 </label>
               <div>
                   <div class="delivery-option-date">
@@ -80,9 +86,11 @@ cart.forEach((cartItem) => {
                <div class="delivery-option">
                <label>
                 <input type="radio"
-                value=4.99
-                class="delivery-option-input"
-                name="delivery-option-${matchingProduct.id}" />
+                  value="4.99"
+                  class="delivery-option-input"
+                  name="delivery-option-${matchingProduct.id}"
+                  data-product-id="${matchingProduct.id}" 
+                  />
                 </label>
                <div>
 
@@ -99,9 +107,11 @@ cart.forEach((cartItem) => {
             <div class="delivery-option">
             <label>
               <input type="radio"
-                value=9.99
-                class="delivery-option-input"
-                name="delivery-option-${matchingProduct.id}" />
+                  value="9.99"
+                  class="delivery-option-input"
+                  name="delivery-option-${matchingProduct.id}"
+                  data-product-id="${matchingProduct.id}" 
+                  />
                 </label>
               <div>
                 <div class="delivery-option-date">
@@ -123,6 +133,8 @@ cart.forEach((cartItem) => {
 
 document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML;
 
+var totalDeliveryPrice = {};
+
 document.querySelectorAll(".js-delete-link").forEach((link) => {
   link.addEventListener("click", () => {
     const productId = link.dataset.productId;
@@ -131,156 +143,132 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
     const container = document.querySelector(
       `.js-cart-item-container-${productId}`
     );
+    delete totalDeliveryPrice[productId];
     container.remove();
-    updateCartQuantity();
-    reviewQuantity();
-    orderSummaryItem();
-
+    calculateShippingCharges(totalDeliveryPrice);
+    addCurrentTotalQuantity();
   });
 });
 
 
-
-function updateCartQuantity() {
-  const cartQuantity = calculateCartQuantity();
-  document.querySelector('.js-return-to-home-link')
-    .innerHTML = `${cartQuantity} items`;
-  reviewQuantity();
-  calculateTotalPrice();
-}
-
-updateCartQuantity();
-
-
-document.querySelectorAll('.js-update-link').forEach((link) => {
-  link.addEventListener('click', () => {
+document.querySelectorAll(".js-update-link").forEach((link) => {
+  link.addEventListener("click", () => {
     const productId = link.dataset.productId;
-    const container = document.querySelector(`.js-cart-item-container-${productId}`);
-    console.log(container.classList)
-    container.classList.add('is-editing-quantity');
+    const container = document.querySelector(
+      `.js-cart-item-container-${productId}`
+    );
+    container.classList.add("is-editing-quantity");
 
-
-
-    const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
-    const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
+    const quantityInput = document.querySelector(
+      `.js-quantity-input-${productId}`
+    );
+    const quantityLabel = document.querySelector(
+      `.js-quantity-label-${productId}`
+    );
     quantityInput.value = quantityLabel.textContent;
-    quantityInput.style.display = 'inline-block';
+    quantityInput.style.display = "inline-block";
 
+    quantityLabel.style.display = "none";
 
-    quantityLabel.style.display = 'none';
-
-
-    link.style.display = 'none';
-    const saveLink = document.querySelector(`.js-save-link[data-product-id="${productId}"]`);
-    saveLink.style.display = 'inline';
-    calculateTotalPrice();
+    link.style.display = "none";
+    const saveLink = document.querySelector(
+      `.js-save-link[data-product-id="${productId}"]`
+    );
+    saveLink.style.display = "inline";
   });
 });
 
-document.querySelectorAll('.js-save-link').forEach((link) => {
-  link.addEventListener('click', () => {
+document.querySelectorAll(".js-save-link").forEach((link) => {
+  link.addEventListener("click", () => {
     const productId = link.dataset.productId;
-    const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
+    const quantityInput = document.querySelector(
+      `.js-quantity-input-${productId}`
+    );
     const newQuantity = Number(quantityInput.value);
 
-
     if (newQuantity < 0 || newQuantity >= 1000) {
-      alert('Quantity must be at least 0 and less than 1000');
+      alert("Quantity must be at least 0 and less than 1000");
       return;
     }
 
-
     updateQuantity(productId, newQuantity);
 
-
-    const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
+    const quantityLabel = document.querySelector(
+      `.js-quantity-label-${productId}`
+    );
     quantityLabel.textContent = newQuantity;
-    quantityLabel.style.display = 'inline';
+    quantityLabel.style.display = "inline";
 
+    quantityInput.style.display = "none";
+    const updateLink = document.querySelector(
+      `.js-update-link[data-product-id="${productId}"]`
+    );
+    updateLink.style.display = "inline";
 
-    quantityInput.style.display = 'none';
-    const updateLink = document.querySelector(`.js-update-link[data-product-id="${productId}"]`);
-    console.log(updateLink)
-    updateLink.style.display = 'inline';
-
-
-    link.style.display = 'none';
-
-
-    updateCartQuantity();
-    orderSummaryItem();
-    calculateTotalPrice();
+    link.style.display = "none";
+    addCurrentTotalQuantity();
   });
 });
 
-
-// Order Summary
-
-function orderSummaryItem() {
-  const orderSummaryItem = document.querySelector(".order-summary-item-quantity");
-  let summaryItem = calculateCartQuantity();
-  orderSummaryItem.innerHTML = `Item (${summaryItem}):`;
-
-
-}
-orderSummaryItem();
-calculateTotalPrice();
-// ... Existing code ...
-
-// Calculate total price and insert into priceContainer
-function calculateTotalPrice() {
-  let totalPrice = 0;
-
-  cart.forEach((cartItem) => {
-    const productId = cartItem.productId;
-    const matchingProduct = products.find((product) => product.id === productId);
-
-    if (matchingProduct) {
-      const itemPrice = matchingProduct.priceCents;
-      const quantity = cartItem.quantity;
-      totalPrice += itemPrice * quantity;
+const ordersContainer = document.querySelector(".js-order-summary");
+function shippingCostRadio(){
+  ordersContainer.addEventListener("change", (event) => {
+    // Check if the changed element is a radio input.
+    if (event.target.type === "radio") {
+      const selectedOption = event.target.value;
+      const itemId = event.target.name.split("delivery-option-")[1];
+      totalDeliveryPrice[itemId] = Number(selectedOption);
     }
+    addCurrentTotalQuantity();
+  });
+}
+
+function calculateShippingCharges(shippingMap){
+  let cost = Object.values(shippingMap).reduce(
+    (acc, curr) => {
+      return curr + acc;
+    },
+    0
+  );
+  return Number(cost) || 0;
+}
+
+function calculateCartQuantityForOrder(){
+  let totalItem = 0;
+  cart.forEach(item => {
+    totalItem += Number(item.quantity);
+  })
+  return totalItem
+}
+
+function addCurrentTotalQuantity() {
+
+  const topHeadTotalItem = document.querySelector(".js-return-to-home-link");
+  const orderSummaryItem = document.getElementById("head-total-item-quantity");
+  const totalProductsPayment = document.getElementById("total-products-payment");
+  const shippingPriceContainer = document.querySelector(".payment-summary-money-delivery");
+  const totalBeforeTaxContainer = document.getElementById("total-before-tax");
+  const totalTaxContainer = document.getElementById("total-tax");
+  const grandTotalContainer = document.getElementById("grand-total");
+
+  var currentPayment = 0;
+  cart.forEach((item) => {
+    currentPayment += item.priceCents;
   });
 
-  return totalPrice;
+  let shippingCost = calculateShippingCharges(totalDeliveryPrice);
+  let totalBeforeTax = Number(formatCurrency(currentPayment)) + shippingCost;
+  let totalTaxToBePaid = Number(totalBeforeTax * 0.1).toFixed(2);
+  let grandTotalToPay = Number(totalBeforeTax) + Number(totalTaxToBePaid);
+  let cartQuantity = calculateCartQuantityForOrder();
+
+  topHeadTotalItem.innerHTML = `${cartQuantity} items`;
+  orderSummaryItem.innerHTML = `Item (${cartQuantity}):`;
+  totalProductsPayment.innerHTML = `$${formatCurrency(currentPayment)}`;
+  shippingPriceContainer.innerHTML = `$${shippingCost.toFixed(2)}`;
+  totalBeforeTaxContainer.innerHTML = `$${totalBeforeTax.toFixed(2)}`;
+  totalTaxContainer.innerHTML = `$${totalTaxToBePaid}`;
+  grandTotalContainer.innerHTML = `$${Number(grandTotalToPay).toFixed(2)}`;
 }
-
-const totalPrice = calculateTotalPrice();
-
-const priceContainer = document.querySelector(".payment-summary-money");
-priceContainer.innerHTML = `$${formatCurrency(totalPrice)}`;
-
-const summaryMoney = document.querySelector(".payment-before-tax");
-summaryMoney.innerHTML = `$${formatCurrency(totalPrice)}`;
-console.log(summaryMoney)
-
-document.querySelector(".estimated-tax").innerHTML = `$${formatCurrency(totalPrice / 100 * 10)}`
-
-document.querySelector(".summary-order-total").innerHTML = `$${formatCurrency(totalPrice + (totalPrice / 100 * 10))}`
-
-
-
-document.querySelectorAll("#summary-option").forEach((button) => {
-  button.addEventListener('click', () => {
-    const productId = button.dataset.productId;
-    console.log(productId)
-    const deliveryPrice = document.querySelectorAll("#summary-option");
-    console.log(deliveryPrice.value)
-  })
-})
-let totalDeliveryCharges = 0;
-const deliveryInputCharges = document.querySelectorAll(".delivery-option-input");
-const deliveryFormId = document.querySelectorAll("#option-value")
-deliveryFormId.addEventListener('click', ()=>{
-  deliveryInputCharges.forEach((item)=>{
-    item.addEventListener('click', ()=>{
-     if(item.checked){
-       totalDeliveryCharges += Number(item.value)
-     }
-    })
-   })
-})
-
-
-// console.log(document.querySelectorAll("#option-value"))
-console.log(totalDeliveryCharges)
+shippingCostRadio();
+addCurrentTotalQuantity();
