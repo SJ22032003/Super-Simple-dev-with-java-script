@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon</title>
+    <link rel="stylesheet" href="/Style/amazon.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amazon</title>
-  <link rel="stylesheet" href="/amazon.css">
-</head>
+  <body>
+    <header class="navigation-bar">
+      <div class="amz-logo">
+        <a href="http://127.0.0.1:5500/Amazon.html"
+          ><img
+            class="amazon-logo"
+            src="/images/amazon-logo-white.png"
+            alt="Amazon logo"
+        /></a>
+      </div>
 
-<body>
+      <input class="search-box" type="search" placeholder="Search" />
+      <button>
+        <img class="search-icon" src="/images/search-icon.png" alt="" />
+      </button>
 
-  <header class="navigation-bar">
-    <div class="amz-logo"><a href="http://127.0.0.1:5500/Amazon.html"><img class="amazon-logo" src="/images/amazon-logo-white.png" alt="Amazon logo"></a></div>
+      <div class="return-order">
+        <p class="return">Returns</p>
+        <p class="orders">& Orders</p>
+      </div>
+      <div class="position">
+        <a href="http://127.0.0.1:5500/amazon2.html">
+          <img class="cart-icon" src="/images/cart-icon.png" alt=""/></a>
+        <div class="cart-value js-cart-value">
+          <a href="http://127.0.0.1:5500/amazon2.html">0</a>
+        </div>
+      </div>
+      <div class="cart">
+        <a class="cart-value-anchor" href="http://127.0.0.1:5500/amazon2.html"
+          >Cart</a
+        >
+      </div>
+    </header>
 
-    <input class="search-box" type="search" placeholder="Search">
-    <button><img class="search-icon" src="/images/search-icon.png" alt=""></button>
+    <div class="grid-all-container js-product-cantainer"></div>
 
-    <div class="return-order">
-      <p class="return">Returns</p>
-      <p class="orders">& Orders</p>
-    </div>
-    <div class="position">
-     <a href="http://127.0.0.1:5500/amazon2.html"><img class="cart-icon" src="/images/cart-icon.png" alt=""></a> 
-      <div class="cart-value js-cart-value"><a href="http://127.0.0.1:5500/amazon2.html">0</a></div>
-    </div>
-    <div class="cart"><a class="cart-value-anchor" href="http://127.0.0.1:5500/amazon2.html">Cart</a></div>
-  </header>
-
-  <div class="grid-all-container js-product-cantainer">
-   
-  </div>
-
-   
-
-  <script type="module" src="/amazon.js"></script>
-  <script src="checkout.js"></script>
-  
-</body>
-
+    <script type="module" src="/script/amazon.js"></script>
+    <script type="module" src="/script/checkout.js"></script>
+  </body>
 </html>
